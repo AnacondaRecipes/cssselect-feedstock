@@ -20,7 +20,6 @@ requirements:
     - setuptools
     - pip
     - wheel
-
   run:
     - python
 
