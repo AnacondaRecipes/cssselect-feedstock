@@ -27,18 +27,22 @@ requirements:
 test:
   imports:
     - cssselect
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://pythonhosted.org/cssselect/
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: LICENSE
+  license_family: BSD
   summary: CSS Selectors for Python
   description: |
     Cssselect parses CSS3 Selectors and translate them to XPath 1.0
     expressions. Such expressions can be used in lxml or another XPath engine
     to find the matching elements in an XML or HTML document.
-  doc_url: https://cssselect.readthedocs.io/en/latest/
-  doc_source_url: https://github.com/scrapy/cssselect/blob/master/README.rst
+  doc_url: https://cssselect.readthedocs.io/
   dev_url: https://github.com/scrapy/cssselect
 
 extra:
