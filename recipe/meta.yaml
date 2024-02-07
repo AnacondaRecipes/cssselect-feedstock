@@ -1,6 +1,5 @@
 {% set name = "cssselect" %}
-{% set version = "1.1.0" %}
-{% set sha256 = "dde8c1d4a2c82de6889a3af1c1adbce1a6f3ec08b07a854d873f3f3da92960af" %}
+{% set version = "1.2.0" %}
 
 package:
   name: {{ name }}
@@ -8,37 +7,41 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/scrapy/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 666b19839cfaddb9ce9d36bfe4c969132c647b92fc9088c4e23f786b30f1b3dc
 
 build:
-  noarch: python
   number: 0
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python
     - setuptools
-
+    - pip
+    - wheel
   run:
     - python
 
 test:
   imports:
     - cssselect
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://pythonhosted.org/cssselect/
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: LICENSE
+  license_family: BSD
   summary: CSS Selectors for Python
   description: |
     Cssselect parses CSS3 Selectors and translate them to XPath 1.0
     expressions. Such expressions can be used in lxml or another XPath engine
     to find the matching elements in an XML or HTML document.
-  doc_url: https://cssselect.readthedocs.io/en/latest/
-  doc_source_url: https://github.com/scrapy/cssselect/blob/master/README.rst
+  doc_url: https://cssselect.readthedocs.io/
   dev_url: https://github.com/scrapy/cssselect
 
 extra:
