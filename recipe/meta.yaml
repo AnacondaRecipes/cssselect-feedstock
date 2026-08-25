@@ -16,10 +16,10 @@ build:
 
 requirements:
   host:
-    - python
-    - setuptools
     - pip
+    - python
     - wheel
+    - setuptools
   run:
     - python
 
@@ -31,7 +31,8 @@ test:
   requires:
     - pip
     - pytest
-    - lxml
+    # Not in main channel
+    - lxml  # [not (win and arm64)]
   commands:
     - pip check
     - pytest -v tests
