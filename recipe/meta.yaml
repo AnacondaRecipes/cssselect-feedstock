@@ -1,5 +1,5 @@
 {% set name = "cssselect" %}
-{% set version = "1.3.0" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name }}
@@ -7,19 +7,18 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 57f8a99424cfab289a1b6a816a43075a4b00948c86b4dcf3ef4ee7e15f7ab0c7
+  sha256: 3cbe82dd7acbee9ba9e5723b5f9e4749826912f1fb31cd7f92aabed5fde15b15
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<39]
+  skip: true  # [py<310]
 
 requirements:
   host:
     - pip
     - python
-    - wheel
-    - setuptools
+    - hatchling >=1.27.0
   run:
     - python
 
