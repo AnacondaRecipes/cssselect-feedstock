@@ -34,7 +34,7 @@ test:
     - lxml  # [not (win and arm64)]
   commands:
     - pip check
-    - pytest -v tests
+    - pytest -v tests  # [not (win and arm64)]
 
 about:
   home: https://pythonhosted.org/cssselect
