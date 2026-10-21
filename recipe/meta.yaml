@@ -1,5 +1,5 @@
 {% set name = "cssselect" %}
-{% set version = "1.5.0" %}
+{% set version = "1.6.0" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3cbe82dd7acbee9ba9e5723b5f9e4749826912f1fb31cd7f92aabed5fde15b15
+  sha256: 8c83a7139e97b93aa5ebdc0f46e785f7056a08a8bf201e597a6a2629d7eb11db
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<310]
+  skip: true  # [py<311]
 
 requirements:
   host:
@@ -34,12 +34,14 @@ test:
     - lxml  # [not (win and arm64)]
   commands:
     - pip check
-    - pytest -v tests  # [not (win and arm64)]
+    - pytest -vv tests  # [not (win and arm64)]
 
 about:
   home: https://pythonhosted.org/cssselect
   license: BSD-3-Clause
-  license_file: LICENSE
+  license_file:
+    - LICENSE
+    - AUTHORS
   license_family: BSD
   summary: CSS Selectors for Python
   description: |
